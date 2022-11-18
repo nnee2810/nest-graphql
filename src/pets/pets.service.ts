@@ -5,27 +5,33 @@ import { Pet } from "./entities/pet.entity"
 
 @Injectable()
 export class PetsService {
-  constructor(private prismService: PrismaService) {}
+  constructor(private prismaService: PrismaService) {}
 
   async create(createPetInput: CreatePetInput): Promise<Pet> {
-    return this.prismService.pet.create({ data: createPetInput })
+    return this.prismaService.pet.create({ data: createPetInput })
   }
 
   async getAll(): Promise<Pet[]> {
-    return this.prismService.pet.findMany({
-      include: {
-        owner: true,
-      },
+    return this.prismaService.pet.findMany()
+  }
+
+  async getByOwnerId(ownerId: number): Promise<Pet[]> {
+    return this.prismaService.pet.findMany({
+      where: { ownerId },
     })
   }
 
   async update(updatePetInput: UpdatePetInput): Promise<Pet> {
     const { id, ...data } = updatePetInput
-    return this.prismService.pet.update({
+    return this.prismaService.pet.update({
       data,
       where: {
         id,
       },
     })
+  }
+
+  async deleteById(id: number): Promise<Pet> {
+    return this.prismaService.pet.delete({ where: { id } })
   }
 }

@@ -1,9 +1,10 @@
 import { Field, InputType } from "@nestjs/graphql"
-import { IsAlpha } from "class-validator"
+import { IsString, MinLength } from "class-validator"
 
 @InputType()
 export class CreateOwnerInput {
   @Field()
-  @IsAlpha()
+  @IsString()
+  @MinLength(1)
   name: string
 }

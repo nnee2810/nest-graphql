@@ -13,6 +13,12 @@ type SignInResponse {
   user: User!
 }
 
+type Owner {
+  id: Int!
+  name: String!
+  pets: [Pet!]
+}
+
 type Pet {
   id: Int!
   name: String!
@@ -21,22 +27,19 @@ type Pet {
   ownerId: Int
 }
 
-type Owner {
-  id: Int!
-  name: String!
-  pets: [Pet!]
-}
-
 type Query {
-  getAllPets: [Pet!]!
-  getAllOwners: [Owner!]!
+  getPets: [Pet!]!
+  getOwners: [Owner!]!
   getUserByUsername(username: String!): User!
 }
 
 type Mutation {
   createPet(createPetInput: CreatePetInput!): Pet!
   updatePet(updatePetInput: UpdatePetInput!): Pet!
+  deletePet(id: Int!): Pet!
   createOwner(createOwnerInput: CreateOwnerInput!): Owner!
+  updateOwner(updateOwnerInput: UpdateOwnerInput!): Owner!
+  deleteOwner(id: Int!): Owner!
   createUser(createUserInput: CreateUserInput!): User!
   signIn(signInInput: SignInInput!): SignInResponse!
 }
@@ -56,6 +59,11 @@ input UpdatePetInput {
 
 input CreateOwnerInput {
   name: String!
+}
+
+input UpdateOwnerInput {
+  name: String
+  id: Int!
 }
 
 input CreateUserInput {

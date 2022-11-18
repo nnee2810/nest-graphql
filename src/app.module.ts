@@ -16,6 +16,9 @@ import { UsersModule } from "./users/users.module"
     GraphQLModule.forRoot({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), "src/schema.gql"),
+      formatError: (error) => ({
+        message: error?.extensions?.response?.message || error?.message,
+      }),
     }),
     PetsModule,
     OwnersModule,
