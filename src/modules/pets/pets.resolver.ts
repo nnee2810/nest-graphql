@@ -7,8 +7,10 @@ import {
   ResolveField,
   Resolver,
 } from "@nestjs/graphql"
-import { Owner } from "src/owners/entities/owner.entity"
-import { OwnersService } from "src/owners/owners.service"
+import { User } from "@prisma/client"
+import { GetUser } from "src/decorators"
+import { Owner } from "src/modules/owners/entities/owner.entity"
+import { OwnersService } from "src/modules/owners/owners.service"
 import { CreatePetInput, UpdatePetInput } from "./dto"
 import { Pet } from "./entities/pet.entity"
 import { PetsService } from "./pets.service"
@@ -28,7 +30,9 @@ export class PetsResolver {
   }
 
   @Query(() => [Pet])
-  async getPets(): Promise<Pet[]> {
+  async getPets(@GetUser() user: User): Promise<Pet[]> {
+    console.log(user)
+
     return this.petsService.getAll()
   }
 

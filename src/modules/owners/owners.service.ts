@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common"
-import { PrismaService } from "src/prisma/prisma.service"
+import { PrismaService } from "src/modules/prisma/prisma.service"
 import { UpdateOwnerInput } from "./dto"
 import { CreateOwnerInput } from "./dto/create-owner.input"
 import { Owner } from "./entities/owner.entity"

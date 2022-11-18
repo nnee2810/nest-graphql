@@ -5,11 +5,11 @@ import { GraphQLModule } from "@nestjs/graphql"
 import { join } from "path"
 import { AppController } from "./app.controller"
 import { AppService } from "./app.service"
-import { AuthModule } from "./auth/auth.module"
-import { JwtGuard } from "./auth/jwt.guard"
-import { OwnersModule } from "./owners/owners.module"
-import { PetsModule } from "./pets/pets.module"
-import { UsersModule } from "./users/users.module"
+import { AuthModule } from "./modules/auth/auth.module"
+import { JwtGuard } from "./modules/auth/jwt.guard"
+import { OwnersModule } from "./modules/owners/owners.module"
+import { PetsModule } from "./modules/pets/pets.module"
+import { UsersModule } from "./modules/users/users.module"
 
 @Module({
   imports: [

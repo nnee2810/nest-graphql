@@ -1,5 +1,5 @@
 import { Field, Int, ObjectType } from "@nestjs/graphql"
-import { Pet } from "src/pets/entities/pet.entity"
+import { Pet } from "src/modules/pets/entities/pet.entity"
 
 @ObjectType()
 export class Owner {

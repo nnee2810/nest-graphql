@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common"
-import { OwnersService } from "src/owners/owners.service"
-import { PrismaService } from "src/prisma/prisma.service"
+import { OwnersService } from "src/modules/owners/owners.service"
+import { PrismaService } from "src/modules/prisma/prisma.service"
 import { PetsResolver } from "./pets.resolver"
 import { PetsService } from "./pets.service"
 
